@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>GO PESAN</title>
+
+    <style>
+        .container {
+            max-width: 550px;
+        }
+    </style>
+
+  </head>
+  <body>
+    <div class="container mt-5">
+        <h3>Data Pesanan</h3>
+        <a href="/pelanggan" class="btn btn-sm btn-primary">Lihat Pesanan</a>
+        <hr/>
+
+        {{ if .pesan }}
+            <div class="alert alert-success">
+                {{  .pesan }}
+            </div>
+        {{ end }}
+
+        <form action="/pelanggan/add" method="post">
+            <div class="form-group">
+                <label for="">Nomor Pesanan</label>
+                <input type="text" name="no_pesanan" value="{{ .pelanggan.NoPesanan }}" class="form-control {{ if .validation.NoPesanan }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.NoPesanan }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Pesanan</label>
+                <input type="text" name="pesanan" value="{{ .pelanggan.Pesanan }}" class="form-control {{ if .validation.Pesanan }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.Pesanan }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Harga</label>
+                <input type="text" name="harga" value="{{ .pelanggan.Harga }}" class="form-control {{ if .validation.Harga }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.Harga }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Jumlah</label>
+                <input type="text" name="jumlah" value="{{ .pelanggan.Jumlah }}" class="form-control {{ if .validation.Jumlah }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.Jumlah }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Total</label>
+                <input type="text" name="total" value="{{ .pelanggan.Total }}" class="form-control {{ if .validation.Total }} is-invalid {{ end }}"> 
+                <div class="invalid-feedback">
+                    {{ .validation.Total }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Meja</label>
+                <input type="text" name="meja" value="{{ .pelanggan.Meja }}" class="form-control {{ if .validation.Meja }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.Meja }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Status</label>
+                <select name="status" value="{{ .Status }}" class="form-control {{ if .validation.Status }} is-invalid {{ end }}">
+                    <option value="">Pilih Status</option>
+                    <option value="1">Berhasil</option>
+                    <option value="2">Menunggu</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">SIMPAN</button>
+            </div>
+            </form>
+    </div>
+    </body>
+</html>

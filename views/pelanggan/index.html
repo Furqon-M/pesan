@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>GO PESAN</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+        <h3>Data Pesanan</h3>
+        <a href="/pelanggan/add" class="btn btn-sm btn-primary">Tambah Pesanan</a>
+        <hr/>
+
+        <table class="table table-sriped table-hover">
+            <thead>
+                <tr>
+                    <th>No Pesanan</th>
+                    <th>Pesanan</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                    <th>Meja</th>
+                    <th>Status Pesanan</th>
+                    <th>Aksi</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .pelanggan }}
+                    <tr>
+                        <td>{{ .NoPesanan }}</td>
+                        <td>{{ .Pesanan }}</td>
+                        <td>{{ .Harga }}</td>
+                        <td>{{ .Jumlah }}</td>
+                        <td>{{ .Total }}</td>
+                        <td>{{ .Meja }}</td>
+                        <td>{{ .Status }}</td>
+                        <td>
+                            <a href="/pelanggan/edit?id={{.Id}}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/pelanggan/delete?id={{.Id}}" onclick="return confimr('Apakah anda yakin ingin menghapus pesanan?')" class="btn btn-sm btn-danger">hapus</a>
+                        </td>
+                    </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+    </body>
+</html>
